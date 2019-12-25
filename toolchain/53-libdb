@@ -1,0 +1,11 @@
+name=libdb
+version=5.3.28
+source=(http://download.oracle.com/berkeley-db/db-$version.tar.gz)
+
+build() {
+	cd db-$version
+	cd build_unix
+	../dist/configure --prefix=/tools --enable-compat185 --enable-dbm --disable-static
+	make
+	make install
+}

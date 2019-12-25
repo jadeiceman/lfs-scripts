@@ -1,0 +1,18 @@
+name=rpm
+version=4.14.2
+source=(https://github.com/rpm-software-management/rpm/archive/$name-$version-release.tar.gz)
+
+build() {
+	cd rpm-$name-$version-release
+	./autogen.sh --noconfigure
+	./configure --prefix=/tools \
+		--disable-dependency-tracking \
+		--disable-static \
+		--enable-python \
+		--with-cap \
+		--with-lua \
+		--disable-silent-rules \
+		--with-external-db
+	make
+	make install
+}
