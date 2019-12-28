@@ -1,0 +1,10 @@
+name=popt
+version=1.16
+source=(ftp://anduin.linuxfromscratch.org/BLFS/svn/p/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --disable-silent-rules
+	make
+	make install
+}

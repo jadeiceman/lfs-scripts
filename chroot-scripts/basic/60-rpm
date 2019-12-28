@@ -1,0 +1,25 @@
+#!/bin/bash
+
+name=rpm
+version=4.14.2
+
+mkdir -pv /tmp/rpm
+cd /tmp/rpm
+
+wget https://github.com/rpm-software-management/rpm/archive/$name-$version-release.tar.gz
+
+tar -xf $name-$version-release.tar.gz
+
+cd rpm-$name-$version-release
+./autogen.sh --noconfigure
+./configure  \
+	CPPFLAGS='-I/usr/include/nspr -I/usr/include/nss -DLUA_COMPAT_APIINTCASTS' \
+            --disable-dependency-tracking \
+            --disable-static \
+            --enable-python \
+            --with-cap \
+            --with-lua \
+            --disable-silent-rules \
+            --with-external-db
+        make
+        make install

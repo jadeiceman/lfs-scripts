@@ -1,0 +1,15 @@
+name=nspr
+version=4.20
+source=(http://ftp.mozilla.org/pub/nspr/releases/v$version/src/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	cd nspr
+	./configure --prefix=/usr
+	    --with-mozilla \
+	    --with-pthreads \
+	    $([ $(uname -m) = x86_64 ] && echo --enable-64bit) \
+	    --disable-silent-rules
+	make
+	make install
+}

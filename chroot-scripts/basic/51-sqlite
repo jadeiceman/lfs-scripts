@@ -1,0 +1,17 @@
+name=sqlite
+version=3.26.0
+sourcever=3260000
+source=(http://sqlite.org/2018/$name-autoconf-$sourcever.tar.gz)
+
+build() {
+	cd $name-autoconf-$sourcever
+	./configure --prefix=/usr \
+		CXXFLAGS="\
+		-DSQLITE_ENABLE_FTS3=1              \
+		-DSQLITE_ENABLE_COLUMN_METADATA=1   \
+		-DSQLITE_ENABLE_UNLOCK_NOTIFY=1     \
+		-DSQLITE_SECURE_DELETE=1"           \
+		--disable-static
+	make
+	make install
+}

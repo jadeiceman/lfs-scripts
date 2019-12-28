@@ -1,0 +1,11 @@
+name=linux
+version=4.19.52
+source=(https://www.kernel.org/pub/linux/kernel/v4.x/linux-$version.tar.xz)
+
+build() {
+        cd $name-$version
+	make mrproper
+	make INSTALL_HDR_PATH=dest headers_install
+	cp -rv dest/include/* /tools/include
+}
+

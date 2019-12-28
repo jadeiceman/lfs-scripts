@@ -1,0 +1,25 @@
+name=gcc
+version=7.3.0
+source=(http://ftp.gnu.org/gnu/gcc/$name-$version/$name-$version.tar.xz)
+
+build() {
+	rm -f /usr/lib/gcc
+	cd $name-$version
+	SED=sed                               \
+	../configure --prefix=/usr            \
+             --enable-languages=c,c++ \
+             --disable-multilib       \
+             --disable-bootstrap      \
+             --with-system-zlib
+	make
+	make install
+
+	ln -sv ../usr/bin/cpp /lib
+	ln -sv gcc /usr/bin/cc
+	install -v -dm755 /usr/lib/bfd-plugins
+	ln -sfv ../../libexec/gcc/$(gcc -dumpmachine)/7.3.0/liblto_plugin.so \
+        /usr/lib/bfd-plugins/
+
+	mkdir -pv /usr/share/gdb/auto-load/usr/lib
+	mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib
+}

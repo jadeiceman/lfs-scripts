@@ -1,0 +1,20 @@
+
+MAKEFLAGS="-j$(nproc)"
+LFS=/chroot-scripts
+LFS_TGT=$(uname -m)-lfs-linux-gnueabihf
+LFS_FLOAT=hard
+LFS_FPU=vfpv3-d16
+LFS_ARM_ARCH=armv7a
+LFS_GCC_ARM_ARCH=armv7-a
+
+TCDIR=$CWD/basic
+SRCDIR=$CWD/sources
+PATCHDIR=$CWD/patches
+FILEDIR=$CWD/files
+WORKDIR=/tmp
+
+LABEL=LFSLIVECD
+OUTPUT=lfs-livecd-$(date +"%Y%m%d")
+WDIR=/tmp/lfsiso
+
+#MULTILIB=yes

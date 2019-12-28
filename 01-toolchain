@@ -108,8 +108,6 @@ source $CWD/config
 
 PATH=/tools/bin:/bin:/usr/bin
 
-#export LD_LIBRARY_PATH=/tools/lib:/lib:/usr/lib
-
 export LC_ALL=C PATH MAKEFLAGS LFS LFS_TGT
 
 mkdir -p $TCDIR $SRCDIR $WORKDIR

@@ -1,0 +1,8 @@
+name=man-pages
+version=5.03
+source=(https://www.kernel.org/pub/linux/docs/$name/$name-$version.tar.xz)
+
+build() {
+        cd $name-$version
+        make install
+}

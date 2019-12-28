@@ -1,0 +1,24 @@
+name=util-linux
+version=2.32
+source=(https://www.kernel.org/pub/linux/utils/util-linux/v$version/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	mkdir -pv /tools/var/lib/hwclock
+	./configure --prefix=/tools \
+	    ADJTIME_PATH=/tools/var/lib/hwclock/adjtime   \
+            --docdir=/usr/share/doc/util-linux-2.32 \
+            --disable-chfn-chsh  \
+            --disable-login      \
+            --disable-nologin    \
+            --disable-su         \
+            --disable-setpriv    \
+            --disable-runuser    \
+            --disable-pylibmount \
+            --disable-static     \
+            --without-python     \
+            --without-systemd    \
+            --without-systemdsystemunitdir
+	make
+	make install
+}

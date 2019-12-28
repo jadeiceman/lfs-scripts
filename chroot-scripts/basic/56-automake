@@ -1,0 +1,10 @@
+name=automake
+version=1.16.1
+source=(http://ftp.gnu.org/gnu/automake/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make install
+}
