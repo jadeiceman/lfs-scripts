@@ -25,4 +25,5 @@ mount -vt sysfs sysfs $LFS/sys
 mount -vt tmpfs tmpfs $LFS/run
 
 cp -rv $CWD/chroot-scripts $LFS
+mkdir -pv $LFS/etc/
 cp -L /etc/resolv.conf $LFS/etc/

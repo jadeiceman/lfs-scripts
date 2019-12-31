@@ -1,6 +1,6 @@
 
 MAKEFLAGS="-j$(nproc)"
-LFS=/chroot-scripts
+LFS=/root
 LFS_TGT=$(uname -m)-lfs-linux-gnueabihf
 LFS_FLOAT=hard
 LFS_FPU=vfpv3-d16

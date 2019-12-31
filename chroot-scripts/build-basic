@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/tools/bin/bash
 
 fetch() {	
 	#tarballname=$(echo $1 | rev | cut -d / -f 1 | rev)
@@ -68,11 +68,11 @@ build_src() {
 }
 
 register() {
-	echo $name-$version > $LFS/tools/$(basename $script)
+	echo $name-$version > $LFS/done/$(basename $script)
 }
 
 checkdone() {
-	if [ -e $LFS/tools/$(basename $script) ]; then
+	if [ -e $LFS/done/$(basename $script) ]; then
 		echo "*** skip $(basename $script) ***"
 		return 1
 	else
@@ -115,9 +115,10 @@ source $CWD/config
 #
 #mkdir -p $TCDIR $SRCDIR $WORKDIR
 #
-#if [ ! -d $LFS/tools ]; then
-#	sudo mkdir -pv $LFS/tools
-#fi
+
+if [ ! -d $LFS/done ]; then
+	mkdir -pv $LFS/done
+fi
 #
 #if [ ! -w $LFS ]; then
 #	sudo chown -Rv $USER:$USER $LFS
