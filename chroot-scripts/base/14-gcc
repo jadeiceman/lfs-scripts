@@ -5,6 +5,8 @@ source=(http://ftp.gnu.org/gnu/gcc/$name-$version/$name-$version.tar.xz)
 build() {
 	rm -f /usr/lib/gcc
 	cd $name-$version
+	mkdir build
+	cd build
 	SED=sed                               \
 	../configure --prefix=/usr            \
              --enable-languages=c,c++ \

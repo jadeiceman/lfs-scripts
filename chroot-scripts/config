@@ -7,7 +7,7 @@ LFS_FPU=vfpv3-d16
 LFS_ARM_ARCH=armv7a
 LFS_GCC_ARM_ARCH=armv7-a
 
-TCDIR=$CWD/basic
+TCDIR=$CWD/base
 SRCDIR=$CWD/sources
 PATCHDIR=$CWD/patches
 FILEDIR=$CWD/files
